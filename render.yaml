@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ecg-classification-app
+    env: python
+    plan: free
+    buildCommand: pip install --only-binary=all -r requirements.txt
+    startCommand: streamlit run index.py --server.port $PORT --server.address 0.0.0.0 --server.headless true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
+      - key: PIP_ONLY_BINARY
+        value: ":all:"
